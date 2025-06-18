@@ -1,9 +1,9 @@
 import java.util.*;
 import java.util.regex.*;
 
-public class Main {
+public class Practice2 {
 
-    // ===== МОДЕЛЬ =====
+    //  МОДЕЛЬ
     static class Model {
         public double evaluate(String expression) throws Exception {
             expression = expression.replaceAll("\\s+", "");
@@ -19,7 +19,7 @@ public class Main {
             return evaluateExpression(converted);
         }
 
-        // Проверка правильности скобок
+        // Проверка скобок
         private boolean hasValidParentheses(String expr) {
             int balance = 0;
             for (char ch : expr.toCharArray()) {
@@ -30,7 +30,7 @@ public class Main {
             return balance == 0;
         }
 
-        // Подсчёт числа операндов (слагаемых)
+        // Подсчёт числа слагаемых
         private int countOperands(String expr) {
             Matcher matcher = Pattern.compile("[+\\-*/^]?(?<![a-zA-Z])\\d+(\\.\\d+)?").matcher(expr);
             int count = 0;
@@ -38,7 +38,7 @@ public class Main {
             return count;
         }
 
-        // Предобработка выражения: замена ** на ^, log на log2, exp оставляем
+        
         private String preprocess(String expr) {
             expr = expr.replace("**", "^");
             expr = expr.replaceAll("log\\(", "log2(");
@@ -46,14 +46,14 @@ public class Main {
             return expr;
         }
 
-        // Оценка выражения: разбор и вычисление
+        // разбор и вычисление
         private double evaluateExpression(String expr) throws Exception {
             // Замена функций log2, exp и ! на числовые значения
             expr = replaceFunctions(expr);
             return new ExpressionParser().parse(expr);
         }
 
-        // Обработка log2(), exp(), ! вручную
+        // Обработка log2(), exp()
         private String replaceFunctions(String expr) throws Exception {
             // log2()
             Matcher logMatcher = Pattern.compile("log2\\(([^()]+)\\)").matcher(expr);
@@ -73,7 +73,7 @@ public class Main {
                 expMatcher = Pattern.compile("exp\\(([^()]+)\\)").matcher(expr);
             }
 
-            // факториал (например, 5!)
+            // факториал 
             Matcher factMatcher = Pattern.compile("(\\d+)!").matcher(expr);
             while (factMatcher.find()) {
                 int n = Integer.parseInt(factMatcher.group(1));
@@ -93,7 +93,7 @@ public class Main {
             return result;
         }
 
-        // === Простой парсер арифметических выражений ===
+        //  Простой парсер арифметических выражений
         static class ExpressionParser {
             private int pos = -1, ch;
             private String input;
@@ -122,7 +122,7 @@ public class Main {
                 return false;
             }
 
-            // Парсинг выражения (суммирование и вычитание)
+            // суммирование и вычитание
             private double parseExpression() throws Exception {
                 double x = parseTerm();
                 while (true) {
@@ -132,7 +132,7 @@ public class Main {
                 }
             }
 
-            // Парсинг термов (умножение и деление)
+            // умножение и деление
             private double parseTerm() throws Exception {
                 double x = parseFactor();
                 while (true) {
@@ -143,10 +143,10 @@ public class Main {
                 }
             }
 
-            // Парсинг факторов (числа, скобки, степень, знак)
+            // числа, скобки, степень, знак
             private double parseFactor() throws Exception {
-                if (eat('+')) return parseFactor(); // унарный плюс
-                if (eat('-')) return -parseFactor(); // унарный минус
+                if (eat('+')) return parseFactor(); 
+                if (eat('-')) return -parseFactor();
 
                 double x;
                 int startPos = this.pos;
@@ -169,7 +169,7 @@ public class Main {
         }
     }
 
-    // ===== ПРЕДСТАВЛЕНИЕ =====
+    // ПРЕДСТАВЛЕНИЕ
     static class View {
         Scanner scanner = new Scanner(System.in);
 
@@ -187,7 +187,7 @@ public class Main {
         }
     }
 
-    // ===== КОНТРОЛЛЕР =====
+    // КОНТРОЛЛЕР
     static class Controller {
         private final Model model;
         private final View view;
@@ -208,7 +208,7 @@ public class Main {
         }
     }
 
-    // ===== ТОЧКА ВХОДА =====
+    // ТОЧКА ВХОДА 
     public static void main(String[] args) {
         Model model = new Model();
         View view = new View();
