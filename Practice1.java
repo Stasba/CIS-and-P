@@ -3,7 +3,7 @@ import java.util.regex.*;
 
 public class Practice1 {
 
-    // ===== MODEL =====
+    
     static class Model {
         public double evaluate(String expression) throws Exception {
             if (!expression.matches("^-?\\d+(\\.\\d+)?[\\s\\S]*\\d(\\.\\d+)?$")) {
@@ -77,7 +77,7 @@ public class Practice1 {
         }
     }
 
-    // ===== VIEW =====
+    // Представление
     static class View {
         Scanner scanner = new Scanner(System.in);
 
@@ -95,7 +95,7 @@ public class Practice1 {
         }
     }
 
-    // ===== CONTROLLER =====
+    // Контроллер
     static class Controller {
         private final Model model;
         private final View view;
@@ -116,7 +116,7 @@ public class Practice1 {
         }
     }
 
-    // ===== MAIN =====
+    // MAIN
     public static void main(String[] args) {
         Model model = new Model();
         View view = new View();
