@@ -3,7 +3,7 @@ import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Main {
+public class Practice3 {
 
     // МОДЕЛЬ
     static class User {
