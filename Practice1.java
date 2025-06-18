@@ -1,7 +1,7 @@
 import java.util.*;
 import java.util.regex.*;
 
-public class Main {
+public class Practice1 {
 
     // ===== MODEL =====
     static class Model {
