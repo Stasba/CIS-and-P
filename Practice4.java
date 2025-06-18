@@ -15,7 +15,7 @@ import java.io.*;
 @SpringBootApplication
 @EnableCaching
 @EnableScheduling
-public class VotingApiApp {
+public class Practice4 {
     public static void main(String[] args) {
         SpringApplication.run(VotingApiApp.class, args);
     }
