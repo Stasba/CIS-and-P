@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Stack;
 
-public class Main {
+public class CalcMVC {
 
     // Главный метод, с которого начинается выполнение программы.
     public static void main(String[] args) {
